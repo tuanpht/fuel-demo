@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- phpcs version 3 -->
+<ruleset name="FramgiaCustom">
+    <description>Framgia Standard for project that uses Fuel</description>
+    <arg name="tab-width" value="4"/>
+
+    <file>./fuel/app/classes</file>
+    <file>./fuel/app/config</file>
+
+    <rule ref="Framgia" />
+</ruleset>
