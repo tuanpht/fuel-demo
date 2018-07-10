@@ -7,5 +7,8 @@
     <file>./fuel/app/classes</file>
     <file>./fuel/app/config</file>
 
-    <rule ref="Framgia" />
+    <rule ref="Framgia">
+        <exclude name="PSR1.Methods.CamelCapsMethodName" />
+        <exclude name="Framgia.Variables.ValidVariableName" />
+    </rule>
 </ruleset>

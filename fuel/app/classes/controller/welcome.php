@@ -1,14 +1,12 @@
 <?php
-/**
- * Fuel is a fast, lightweight, community driven PHP 5.4+ framework.
- *
- * @package    Fuel
- * @version    1.8.1
- * @author     Fuel Development Team
- * @license    MIT License
- * @copyright  2010 - 2018 Fuel Development Team
- * @link       http://fuelphp.com
- */
+namespace Controller;
+
+use Controller;
+use Response;
+use View;
+use Presenter;
+use Presenter\Welcome\Hello;
+use Presenter\Welcome\NotFound;
 
 /**
  * The Welcome Controller.
@@ -19,7 +17,7 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Welcome extends Controller
+class Welcome extends Controller
 {
     /**
      * The basic welcome message
@@ -41,7 +39,7 @@ class Controller_Welcome extends Controller
      */
     public function action_hello()
     {
-        return Response::forge(Presenter::forge('welcome/hello'));
+        return Response::forge(Presenter::forge(Hello::class));
     }
 
     /**
@@ -52,6 +50,6 @@ class Controller_Welcome extends Controller
      */
     public function action_404()
     {
-        return Response::forge(Presenter::forge('welcome/404'), 404);
+        return Response::forge(Presenter::forge(NotFound::class), 404);
     }
 }

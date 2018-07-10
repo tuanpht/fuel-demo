@@ -1,4 +1,5 @@
 <?php
+namespace Presenter\Welcome;
 
 /**
  * The welcome 404 presenter.
@@ -6,7 +7,7 @@
  * @package  app
  * @extends  Presenter
  */
-class Presenter_Welcome_404 extends Presenter
+class NotFound extends \Presenter
 {
     /**
      * Prepare the view data, keeping this in here helps clean up

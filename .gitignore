@@ -34,3 +34,7 @@ desktop.ini
 
 # php-cs-fixer cache file
 .php_cs.cache
+
+.framgia-ci-reports/
+.framgia-ci-result.temp.yml
+

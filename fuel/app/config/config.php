@@ -214,7 +214,7 @@ return [
     /**
      * Controller class prefix
      */
-    // 'controller_prefix' => 'Controller_',
+    'controller_prefix' => 'Controller\\',
 
     /**
      * Routing settings
