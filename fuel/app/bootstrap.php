@@ -15,6 +15,7 @@ require COREPATH . 'bootstrap.php';
 
 \Autoloader::add_classes([
     'Presenter' => APPPATH . 'classes/presenter.php',
+    'Container' => APPPATH . 'classes/container.php',
 ]);
 
 // Register the autoloader

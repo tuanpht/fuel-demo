@@ -16,6 +16,6 @@ class Hello extends \Presenter
      */
     public function view()
     {
-        $this->name = $this->request()->param('name', 'World');
+        $this->set('name', $this->request()->param('name', 'World'));
     }
 }

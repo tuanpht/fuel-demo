@@ -4,9 +4,11 @@ namespace Controller;
 use Controller;
 use Response;
 use View;
+use Input;
 use Presenter;
 use Presenter\Welcome\Hello;
 use Presenter\Welcome\NotFound;
+use Container;
 
 /**
  * The Welcome Controller.
@@ -27,7 +29,29 @@ class Welcome extends Controller
      */
     public function action_index()
     {
-        return Response::forge(View::forge('welcome/index'));
+        // In case of POST method
+        if (Input::method() == 'POST') {
+            if ($message = Input::post('message')) {
+                return strrev($message);
+            }
+
+            return 'Reverse string';
+        }
+
+        // Handle GET method
+
+        $httpClient = Container::get('httpclient');
+
+        // Just call a test api
+        $data = $httpClient->get('http://httpbin.org/ip')->getBody()->__toString();
+
+        if ($data) {
+            return Response::forge(View::forge('welcome/index', [
+                'data' => $data,
+            ]));
+        }
+
+        return Response::forge('Request failed', 400);
     }
 
     /**
