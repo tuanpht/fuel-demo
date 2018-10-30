@@ -76,4 +76,9 @@ class Welcome extends Controller
     {
         return Response::forge(Presenter::forge(NotFound::class), 404);
     }
+
+    public function action_redirect()
+    {
+        return Response::redirect('welcome/404');
+    }
 }
