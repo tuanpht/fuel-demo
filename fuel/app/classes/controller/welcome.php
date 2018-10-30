@@ -9,6 +9,7 @@ use Presenter;
 use Presenter\Welcome\Hello;
 use Presenter\Welcome\NotFound;
 use Container;
+use Service\Remote;
 
 /**
  * The Welcome Controller.
@@ -38,12 +39,8 @@ class Welcome extends Controller
             return 'Reverse string';
         }
 
-        // Handle GET method
-
-        $httpClient = Container::get('httpclient');
-
         // Just call a test api
-        $data = $httpClient->get('http://httpbin.org/ip')->getBody()->__toString();
+        $data = Remote::getIp();
 
         if ($data) {
             return Response::forge(View::forge('welcome/index', [
@@ -52,6 +49,18 @@ class Welcome extends Controller
         }
 
         return Response::forge('Request failed', 400);
+    }
+
+    /**
+     * @access  public
+     * @return  Response
+     */
+    public function action_new()
+    {
+        // Just call a test api
+        $service = new Remote;
+
+        return $service->nonStatic('ip');
     }
 
     /**
