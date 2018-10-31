@@ -4,6 +4,8 @@ use AspectMock\Test as Aspect;
 
 abstract class Base_Test extends TestCase
 {
+    protected $db_transaction = false;
+
     /**
      * Setup the test environment.
      *
@@ -11,16 +13,18 @@ abstract class Base_Test extends TestCase
      */
     protected function setUp()
     {
-        $uses = class_uses(static::class);
-
-        if (isset($uses[DB_Transaction::class])) {
-            $this->beginDatabaseTransaction();
+        parent::setUp();
+        if ($this->db_transaction) {
+            DB::start_transaction();
         }
     }
 
     protected function tearDown()
     {
         Aspect::clean();
+        if ($this->db_transaction) {
+            DB::rollback_transaction();
+        }
     }
 
     /**
