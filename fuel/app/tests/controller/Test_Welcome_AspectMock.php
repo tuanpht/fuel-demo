@@ -112,6 +112,8 @@ class Test_Welcome_AspectMock extends Base_Test
     public function test_redirect()
     {
         // Replace Response::redirect() with a test double which only returns true
+        // NOTE: using full class name (with namespace) when double a class
+        // e.g. using 'Fuel\Core\Response' instead of 'Response'
         $res = Aspect::double(Response::class, ['redirect' => true]);
 
         // Execute a request to 'test/redirect'
