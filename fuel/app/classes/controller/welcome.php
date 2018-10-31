@@ -10,6 +10,7 @@ use Presenter\Welcome\Hello;
 use Presenter\Welcome\NotFound;
 use Container;
 use Service\Remote;
+use Fuel\Core\Session;
 
 /**
  * The Welcome Controller.
@@ -88,6 +89,7 @@ class Welcome extends Controller
 
     public function action_redirect()
     {
+        Session::get('abc');
         return Response::redirect('welcome/404');
     }
 }

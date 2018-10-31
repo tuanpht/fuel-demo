@@ -2,7 +2,7 @@
 
 <phpunit colors="true"
 	stopOnFailure="false"
-	bootstrap="../core/bootstrap_phpunit.php"
+	bootstrap="bootstrap_phpunit.php"
 	backupGlobals="false">
 	<php>
 		<server name="doc_root" value="../../"/>

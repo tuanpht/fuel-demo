@@ -4,6 +4,7 @@ use AspectMock\Test as Aspect;
 use Service\Remote;
 use GuzzleHttp\Client;
 use Fuel\Core\HttpNotFoundException;
+use Fuel\Core\Response;
 
 /**
  * Tests for Welcome controller
@@ -111,7 +112,7 @@ class Test_Welcome_AspectMock extends Base_Test
     public function test_redirect()
     {
         // Replace Response::redirect() with a test double which only returns true
-        $res = Aspect::double('Fuel\Core\Response', ['redirect' => true]);
+        $res = Aspect::double(Response::class, ['redirect' => true]);
 
         // Execute a request to 'test/redirect'
         Request::forge('welcome/redirect')
